@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Invoice;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,7 @@ Route::get('/user/save', [UserController::class, 'save']);
 Route::post('/user/create', [UserController::class, 'create']);
 Route::put('/user/edit/{id}', [UserController::class, 'edit']);
 Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
+
+
+// resource route (more efficient)
+Route::resource("/roles", RoleController::class);
