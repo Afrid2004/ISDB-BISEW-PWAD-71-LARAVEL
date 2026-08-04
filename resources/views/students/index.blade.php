@@ -1,7 +1,10 @@
 @extends('layouts.backend.app');
 
 @section('content')
-    <h1>All Students</h1>
+    <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+        <h1>All Students</h1>
+        <a href="{{route("students.create")}}" class="btn btn-primary">Create new</a>
+    </div>
     <div>
         <form action="{{ route('students.index') }}" method="GET">
             <div class="input-group">
