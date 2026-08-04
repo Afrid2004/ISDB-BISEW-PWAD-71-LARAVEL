@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Invoice;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,6 @@ Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
 
 // resource route (more efficient)
 Route::resource("/roles", RoleController::class);
+
+// students route 
+Route::resource("students", StudentController::class);

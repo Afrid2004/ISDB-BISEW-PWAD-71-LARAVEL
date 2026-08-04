@@ -121,12 +121,23 @@
                 </li>
 
                 <!-- ---------------------------------- -->
-                <!-- Dashboard -->
+                <!-- Roles -->
                 <!-- ---------------------------------- -->
                 <li class="sidebar-item">
                   <a class="sidebar-link" href="/roles" id="get-url" aria-expanded="false">
                     <iconify-icon icon="carbon:user-role"></iconify-icon>
                     <span class="hide-menu">Roles</span>
+                  </a>
+                </li>
+
+
+                <!-- ---------------------------------- -->
+                <!-- Students -->
+                <!-- ---------------------------------- -->
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="/students" id="get-url" aria-expanded="false">
+                    <iconify-icon icon="griddy-icons:student"></iconify-icon>
+                    <span class="hide-menu">Students</span>
                   </a>
                 </li>
               </ul>
