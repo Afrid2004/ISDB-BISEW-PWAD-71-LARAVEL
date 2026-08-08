@@ -140,6 +140,17 @@
                     <span class="hide-menu">Students</span>
                   </a>
                 </li>
+
+
+                <!-- ---------------------------------- -->
+                <!-- Deleted Students -->
+                <!-- ---------------------------------- -->
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="/students/deleted" id="get-url" aria-expanded="false">
+                    <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                    <span class="hide-menu">Deleted Students</span>
+                  </a>
+                </li>
               </ul>
             </nav>
 

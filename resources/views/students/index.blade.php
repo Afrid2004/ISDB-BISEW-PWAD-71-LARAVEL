@@ -52,7 +52,11 @@
                             <div class="btn-group">
                                 <a href="{{route("students.show", $student->id)}}" class="btn btn-success">Show</a>
                                 <a href="{{route("students.edit", $student->id)}}" class="btn btn-dark">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <form action="{{route("students.destroy", $student->id)}}" method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
                             </div>
                         </td>
                         <td scope="row" class="text-dark">{{ $student->status ? 'Active' : 'Inactive' }}</td>

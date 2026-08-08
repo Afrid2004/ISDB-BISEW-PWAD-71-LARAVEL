@@ -160,7 +160,18 @@ class StudentController extends Controller
 
 
     /**
-     * All deleted students
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->back()->with("success", "Student data has been moved to trash!");
+    }
+
+    /**
+     * View All deleted students
      */
     public function deletedStudents(Request $request)
     {
@@ -183,11 +194,23 @@ class StudentController extends Controller
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    // permenently student 
+    public function forceDelete($id)
     {
-        //
+        $student = Student::withTrashed()->find($id);
+        $photo = public_path('uploads/' . $student->photo);
+        if (File::exists($photo)) {
+            File::delete($photo);
+        }
+        $student->forceDelete();
+        return redirect()->back()->with("Success", "Student deleted successfully");
+    }
+
+    // restore a student 
+    public function restoreStudent($id)
+    {
+        $student = Student::withTrashed()->find($id);
+        $student->restore();
+        return redirect()->back()->with("Success", "Student restored successfully");
     }
 }

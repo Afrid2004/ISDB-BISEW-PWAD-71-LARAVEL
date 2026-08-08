@@ -12,9 +12,9 @@ Route::get('/', function () {
 });
 
 // new test route 
-Route::get("/test", function(){
+Route::get("/test", function () {
     // the test.blade.php file 
-    return view('test'); 
+    return view('test');
 });
 
 // data is in the Invoice Controller 
@@ -32,7 +32,14 @@ Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
 Route::resource("/roles", RoleController::class);
 
 
-// deleted students
-Route::get('/students/deleted', [StudentController::class, 'deletedStudents'])->name('students.deleted');
+// view all deleted students
+Route::get('/students/deleted', [StudentController::class, 'deletedStudents']);
+
+// force delete specefic student 
+Route::delete('/students/delete/{id}', [StudentController::class, 'forceDelete'])->name('students.delete');
+
+// restore specefic student 
+Route::get('/students/restore/{id}', [StudentController::class, 'restoreStudent'])->name('students.restore');
+
 // students route 
 Route::resource("students", StudentController::class);
