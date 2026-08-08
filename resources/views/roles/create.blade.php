@@ -2,7 +2,6 @@
 @section('content')
     <div>
         <h1>Create Page</h1>
-
         <div>
             <form action="{{ route('roles.store') }}" method="post">
                 @csrf

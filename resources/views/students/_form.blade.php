@@ -18,7 +18,7 @@
         <div class="col-md-6 mb-3">
             <label class="form-label">Batch</label>
             <select name="batch" class="form-select bg-white">
-                <option value="">Select Batch</option>
+                <option value="" disabled {{ old('batch', $student->batch ?? '') == '' ? 'selected' : '' }}>Select Batch</option>
                 <option value="2020" {{ old('batch', $student->batch ?? '') == '2020' ? 'selected' : '' }}>2020</option>
                 <option value="2021" {{ old('batch', $student->batch ?? '') == '2021' ? 'selected' : '' }}>2021</option>
                 <option value="2022" {{ old('batch', $student->batch ?? '') == '2022' ? 'selected' : '' }}>2022</option>
@@ -29,24 +29,16 @@
         </div>
         <div class="col-md-6 mb-3">
             <label class="form-label">Photo</label>
-            <input type="file" class="form-control bg-white">
+            <input name="photo" type="file" class="form-control bg-white">
         </div>
         <div class="col-md-6 mb-3">
             <label class="form-label">Status</label>
             <select name="status" class="form-select bg-white">
-                <option value="1" {{old('status', $student->batch ?? '') == 1 ? 'selected' : ''}}>Active</option>
-                <option value="0" {{old('status', $student->batch ?? '') == 0 ? 'selected' : ''}}>Inactive</option>
+                <option value="" disabled {{ old('batch', $student->status ?? '') == '' ? 'selected' : '' }}>Select Status</option>
+                <option value="1" {{old('status', $student->status ?? '') == 1 ? 'selected' : ''}}>Active</option>
+                <option value="0" {{old('status', $student->status ?? '') == 0 ? 'selected' : ''}}>Inactive</option>
             </select>
         </div>
     </div>
     <hr>
-    <div class="d-flex justify-content-end gap-2">
-        <button class="btn btn-dark">
-            Cancel
-        </button>
-
-        <button class="btn btn-primary">
-            Save Student
-        </button>
-    </div>
 </div>

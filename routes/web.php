@@ -31,5 +31,8 @@ Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
 // resource route (more efficient)
 Route::resource("/roles", RoleController::class);
 
+
+// deleted students
+Route::get('/students/deleted', [StudentController::class, 'deletedStudents'])->name('students.deleted');
 // students route 
 Route::resource("students", StudentController::class);

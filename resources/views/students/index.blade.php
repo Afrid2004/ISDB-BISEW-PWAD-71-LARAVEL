@@ -1,17 +1,22 @@
-@extends('layouts.backend.app');
+@extends('layouts.backend.app')
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success mb-3 text-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
         <h1>All Students</h1>
-        <a href="{{route("students.create")}}" class="btn btn-primary">Create new</a>
+        <a href="{{ route('students.create') }}" class="btn btn-primary">Create new</a>
     </div>
-    <div>
+    <div class="mb-3">
         <form action="{{ route('students.index') }}" method="GET">
             <div class="input-group">
                 <input type="text" value="{{ old('search', $search) }}" name="search" class="form-control bg-white"
                     placeholder="Search student id, name, email, batch...">
                 <button class="btn btn-primary" type="button">Search</button>
-                @if (request("search"))
+                @if (request('search'))
                     <a href="{{ route('students.index') }}" class="btn btn-dark" type="button">Clear</a>
                 @endif
             </div>
@@ -40,12 +45,13 @@
                         <td scope="row" class="text-dark">{{ $student->email }}</td>
                         <td scope="row" class="text-dark">{{ $student->batch }}</td>
                         <td scope="row">
-                            <img src={{ $student->photo }} width="50" height="50" alt={{ $student->name }}>
+                            <img src="{{asset('uploads/' . $student->photo )}}" width="50" height="50"
+                                alt="{{ $student->name }}">
                         </td>
                         <td scope="row">
                             <div class="btn-group">
-                                <a href="" class="btn btn-success">Show</a>
-                                <a href="" class="btn btn-dark">Edit</a>
+                                <a href="{{route("students.show", $student->id)}}" class="btn btn-success">Show</a>
+                                <a href="{{route("students.edit", $student->id)}}" class="btn btn-dark">Edit</a>
                                 <a href="" class="btn btn-danger">Delete</a>
                             </div>
                         </td>
