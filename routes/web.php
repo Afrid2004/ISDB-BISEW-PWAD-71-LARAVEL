@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 // new test route 
 Route::get("/test", function () {
@@ -26,20 +26,19 @@ Route::get('/user/save', [UserController::class, 'save']);
 Route::post('/user/create', [UserController::class, 'create']);
 Route::put('/user/edit/{id}', [UserController::class, 'edit']);
 Route::delete('/user/delete/{id}', [UserController::class, 'delete']);
-
-
 // resource route (more efficient)
 Route::resource("/roles", RoleController::class);
 
+//middleware user cannot perform crud operation without login
+Route::middleware(['auth'])->group(function () {
+    // view all deleted students
+    Route::get('/students/deleted', [StudentController::class, 'deletedStudents']);
+    // force delete specefic student 
+    Route::delete('/students/delete/{id}', [StudentController::class, 'forceDelete'])->name('students.delete');
+    // restore specefic student 
+    Route::get('/students/restore/{id}', [StudentController::class, 'restoreStudent'])->name('students.restore');
+    // students route 
+    Route::resource("students", StudentController::class);
+});
 
-// view all deleted students
-Route::get('/students/deleted', [StudentController::class, 'deletedStudents']);
-
-// force delete specefic student 
-Route::delete('/students/delete/{id}', [StudentController::class, 'forceDelete'])->name('students.delete');
-
-// restore specefic student 
-Route::get('/students/restore/{id}', [StudentController::class, 'restoreStudent'])->name('students.restore');
-
-// students route 
-Route::resource("students", StudentController::class);
+require __DIR__ . '/auth.php';
