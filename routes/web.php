@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Invoice;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
@@ -42,3 +43,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// payment route 
+Route::get("payment", [PaymentController::class, 'pay']);
+Route::get("payment/bkash", [PaymentController::class, 'bkash']);
+Route::get("payment/rocket", [PaymentController::class, 'rocket']);
