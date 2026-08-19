@@ -11,3 +11,5 @@ Route::get('/user', function (Request $request) {
 
 // normal api route 
 Route::apiResource('students', StudentController::class);
+
+
